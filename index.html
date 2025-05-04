@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RentWheels - Sewa Motor & Mobil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-gray-50 font-sans">
+    <!-- Header/Navbar -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <i class="fas fa-car text-blue-500 text-2xl mr-2"></i>
+          <h1 class="text-xl font-bold text-blue-600">RentWheels</h1>
+        </div>
+        <nav class="hidden md:flex space-x-6">
+          <a href="#" class="text-blue-600 font-medium">Beranda</a>
+          <a href="#vehicles" class="text-gray-600 hover:text-blue-600"
+            >Kendaraan</a
+          >
+          <a href="#how-it-works" class="text-gray-600 hover:text-blue-600"
+            >Cara Sewa</a
+          >
+          <a href="#testimonials" class="text-gray-600 hover:text-blue-600"
+            >Testimoni</a
+          >
+        </nav>
+        <div class="md:hidden">
+          <button
+            id="mobile-menu-button"
+            class="text-gray-600 hover:text-blue-600"
+          >
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden bg-white border-t md:hidden">
+        <div class="container mx-auto px-4 py-2 flex flex-col">
+          <a href="#" class="py-2 text-blue-600 font-medium">Beranda</a>
+          <a href="#vehicles" class="py-2 text-gray-600 hover:text-blue-600"
+            >Kendaraan</a
+          >
+          <a href="#how-it-works" class="py-2 text-gray-600 hover:text-blue-600"
+            >Cara Sewa</a
+          >
+          <a href="#testimonials" class="py-2 text-gray-600 hover:text-blue-600"
+            >Testimoni</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-blue-600 text-white py-16">
+      <div
+        class="container mx-auto px-4 flex flex-col md:flex-row items-center"
+      >
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Sewa Motor & Mobil Terbaik di Kota Anda
+          </h2>
+          <p class="text-lg mb-6">
+            Temukan kendaraan ideal untuk perjalanan Anda dengan harga
+            terjangkau dan pelayanan terbaik.
+          </p>
+          <a
+            href="#booking-section"
+            class="bg-white text-blue-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-100 transition duration-300 inline-block"
+            >Sewa Sekarang</a
+          >
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+          <img
+            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            alt="Hero Image"
+            class="rounded-lg shadow-xl w-full max-w-md"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking-section" class="py-12 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">
+          Mulai Pemesanan
+        </h2>
+
+        <!-- Progress Steps -->
+        <div class="max-w-3xl mx-auto mb-8">
+          <div class="flex progress-steps justify-between">
+            <div
+              id="step1"
+              class="progress-step active flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-600 font-bold border-2 border-blue-600"
+            >
+              1
+            </div>
+            <div
+              id="step2"
+              class="progress-step flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-400 font-bold border-2 border-gray-300"
+            >
+              2
+            </div>
+            <div
+              id="step3"
+              class="progress-step flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-400 font-bold border-2 border-gray-300"
+            >
+              3
+            </div>
+            <div
+              id="step4"
+              class="progress-step flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-400 font-bold border-2 border-gray-300"
+            >
+              4
+            </div>
+          </div>
+          <div class="flex justify-between mt-2 text-sm">
+            <span class="text-blue-600 font-medium">Pilih Kendaraan</span>
+            <span class="text-gray-400">Detail Sewa</span>
+            <span class="text-gray-400">Data Diri</span>
+            <span class="text-gray-400">Pembayaran</span>
+          </div>
+        </div>
+
+        <!-- Step 1: Vehicle Selection -->
+        <div id="step1-content" class="step-content">
+          <div class="flex flex-col md:flex-row mb-6">
+            <div class="w-full md:w-1/2 md:pr-4 mb-4 md:mb-0">
+              <label class="block text-gray-700 font-medium mb-2"
+                >Jenis Kendaraan</label
+              >
+              <div class="flex border rounded-lg overflow-hidden">
+                <button
+                  id="btn-motor"
+                  class="flex-1 py-2 px-4 bg-blue-600 text-white font-medium"
+                >
+                  Motor
+                </button>
+                <button
+                  id="btn-mobil"
+                  class="flex-1 py-2 px-4 bg-gray-200 text-gray-700 font-medium"
+                >
+                  Mobil
+                </button>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 md:pl-4">
+              <label class="block text-gray-700 font-medium mb-2"
+                >Lokasi Pengambilan</label
+              >
+              <select class="w-full p-2 border rounded-lg">
+                <option>Jakarta Pusat</option>
+                <option>Jakarta Selatan</option>
+                <option>Jakarta Barat</option>
+                <option>Jakarta Timur</option>
+                <option>Jakarta Utara</option>
+                <option>Jawa timur</option>
+                <option>Jawa tengah</option>
+                <option>Jawa Barat</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="motor-section" class="mt-8">
+            <h3 class="text-xl font-bold mb-4">Daftar Motor</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- Motor 1 -->
+              <div
+                class="vehicle-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300"
+              >
+                <img
+                  src="honda scoopy.jpg"
+                  alt="Honda Scoopy"
+                  class="w-full h-48 object-cover"
+                />
+                <div class="p-4">
+                  <h4 class="font-bold text-lg mb-2">Honda Scoopy</h4>
+                  <div class="flex items-center mb-2">
+                    <i class="fas fa-gas-pump text-gray-500 mr-2"></i>
+                    <span class="text-gray-600">Bensin</span>
+                    <i class="fas fa-user-friends text-gray-500 ml-4 mr-2"></i>
+                    <span class="text-gray-600">2 Orang</span>
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <i class="fas fa-tachometer-alt text-gray-500 mr-2"></i>
+                    <span class="text-gray-600">Automatic</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="font-bold text-blue-600">Rp 150.000/hari</span>
+                    <button
+                      class="select-vehicle bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+                      data-vehicle="Honda Scoopy"
+                      data-price="150000"
+                    >
+                      Pilih
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Motor 2 -->
+              <div
+                class="vehicle-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300"
+              >
+                <img
+                  src="nmax.jpg"
+                  alt="Yamaha NMAX"
+                  class="w-full h-48 object-cover"
+                />
+                <div class="p-4">
+                  <h4 class="font-bold text-lg mb-2">Yamaha NMAX</h4>
+                  <div class="flex items-center mb-2">
+                    <i class="fas fa-gas-pump text-gray-500 mr-2"></i>
+                    <span class="text-gray-600">Bensin</span>
+                    <i class="fas fa-user-friends text-gray-500 ml-4 mr-2"></i>
+                    <span class="text-gray-600">2 Orang</span>
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <i class="fas fa-tachometer-alt text-gray-500 mr-2"></i>
+                    <span class="text-gray-600">Automatic</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="font-bold text-blue-600">Rp 200.000/hari</span>
+                    <button
+                      class="select-vehicle bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+                      data-vehicle="Yamaha NMAX"
+                      data-price="200000"
+                    >
+                      Pilih
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Motor 3 -->
+              <div
+                class="vehicle-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300"
+              >
+                <img
+                  src="sprint.jpg"
+                  alt="Vespa Sprint"
+                  class="w-full h-48 object-cover"
+                />
+                <div class="p-4">
+                  <h4 class="font-bold text-lg mb-2">Vespa Sprint</h4>
+                  <div class="flex items-center mb-2">
+                    <i class="fas fa-gas-pump text-gray-500 mr-2"></i>
+                    <span class="text-gray-600">Bensin</span>
+                    <i class="fas fa-user-friends text-gray-500 ml-4 mr-2"></i>
+                    <span class="text-gray-600">2 Orang</span>
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <i class="fas fa-tachometer-alt text-gray-500 mr-2"></i>
+                    <span class="text-gray-600">Automatic</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="font-bold text-blue-600">Rp 250.000/hari</span>
+                    <button
+                      class="select-vehicle bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+                      data-vehicle="Vespa Sprint"
+                      data-price="250000"
+                    >
+                      Pilih
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="mobil-section" class="mt-8 hidden">
+            <h3 class="text-xl font-bold mb-4">Daftar Mobil</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- Mobil 1 -->
+              <div
+                class="vehicle-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300"
+              >
+                <img
+                  src="avanza.jpg"
+                  alt="Toyota Avanza"
+                  class="w-full h-48 object-cover"
+                />
+                <div class="p-4">
+                  <h4 class="font-bold text-lg mb-2">Toyota Avanza</h4>
+                  <div class="flex items-center mb-2">
+                    <i class="fas fa-gas-pump text-gray-500 mr-2"></i>
+                    <span class="text-gray-600">Bensin</span>
+                    <i class="fas fa-user-friends text-gray-500 ml-4 mr-2"></i>
+                    <span class="text-gray-600">7 Orang</span>
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <i class="fas fa-tachometer-alt text-gray-500 mr-2"></i>
+                    <span class="text-gray-600">Manual</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="font-bold text-blue-600">Rp 350.000/hari</span>
+                    <button
+                      class="select-vehicle bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+                      data-vehicle="Toyota Avanza"
+                      data-price="350000"
+                    >
+                      Pilih
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobil 2 -->
+              <div
+                class="vehicle-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300"
+              >
+                <img
+                  src="jazz.jpg"
+                  alt="Honda Jazz"
+                  class="w-full h-48 object-cover"
+                />
+                <div class="p-4">
+                  <h4 class="font-bold text-lg mb-2">Honda Jazz</h4>
+                  <div class="flex items-center mb-2">
+                    <i class="fas fa-gas-pump text-gray-500 mr-2"></i>
+                    <span class="text-gray-600">Bensin</span>
+                    <i class="fas fa-user-friends text-gray-500 ml-4 mr-2"></i>
+                    <span class="text-gray-600">5 Orang</span>
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <i class="fas fa-tachometer-alt text-gray-500 mr-2"></i>
+                    <span class="text-gray-600">Automatic</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="font-bold text-blue-600">Rp 400.000/hari</span>
+                    <button
+                      class="select-vehicle bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+                      data-vehicle="Honda Jazz"
+                      data-price="400000"
+                    >
+                      Pilih
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobil 3 -->
+              <div
+                class="vehicle-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300"
+              >
+                <img
+                  src="fortuner.jpg"
+                  alt="Toyota Fortuner"
+                  class="w-full h-48 object-cover"
+                />
+                <div class="p-4">
+                  <h4 class="font-bold text-lg mb-2">Toyota Fortuner</h4>
+                  <div class="flex items-center mb-2">
+                    <i class="fas fa-gas-pump text-gray-500 mr-2"></i>
+                    <span class="text-gray-600">Diesel</span>
+                    <i class="fas fa-user-friends text-gray-500 ml-4 mr-2"></i>
+                    <span class="text-gray-600">7 Orang</span>
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <i class="fas fa-tachometer-alt text-gray-500 mr-2"></i>
+                    <span class="text-gray-600">Automatic</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="font-bold text-blue-600">Rp 600.000/hari</span>
+                    <button
+                      class="select-vehicle bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+                      data-vehicle="Toyota Fortuner"
+                      data-price="600000"
+                    >
+                      Pilih
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 flex justify-end">
+            <button
+              id="next-to-step2"
+              class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled
+            >
+              Selanjutnya <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Rental Details -->
+        <div id="step2-content" class="step-content hidden">
+          <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h3 class="text-xl font-bold mb-4">Detail Kendaraan</h3>
+            <div class="flex flex-col md:flex-row">
+              <div class="md:w-1/3 mb-4 md:mb-0">
+                <img
+                  id="selected-vehicle-image"
+                  src=""
+                  alt="Selected Vehicle"
+                  class="w-full h-48 object-cover rounded-lg"
+                />
+              </div>
+              <div class="md:w-2/3 md:pl-6">
+                <h4
+                  id="selected-vehicle-name"
+                  class="font-bold text-lg mb-2"
+                ></h4>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <span class="text-gray-600 block">Harga per hari</span>
+                    <span id="selected-vehicle-price" class="font-bold"></span>
+                  </div>
+                  <div>
+                    <span class="text-gray-600 block">Tipe</span>
+                    <span id="selected-vehicle-type" class="font-bold"></span>
+                  </div>
+                  <div>
+                    <span class="text-gray-600 block">Kapasitas</span>
+                    <span
+                      id="selected-vehicle-capacity"
+                      class="font-bold"
+                    ></span>
+                  </div>
+                  <div>
+                    <span class="text-gray-600 block">Transmisi</span>
+                    <span
+                      id="selected-vehicle-transmission"
+                      class="font-bold"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h3 class="text-xl font-bold mb-4">Detail Penyewaan</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Tanggal Mulai</label
+                >
+                <input
+                  type="date"
+                  id="start-date"
+                  class="w-full p-2 border rounded-lg"
+                />
+              </div>
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Tanggal Selesai</label
+                >
+                <input
+                  type="date"
+                  id="end-date"
+                  class="w-full p-2 border rounded-lg"
+                />
+              </div>
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Lokasi Pengambilan</label
+                >
+                <select
+                  id="pickup-location"
+                  class="w-full p-2 border rounded-lg"
+                >
+                  <option>Jakarta Pusat</option>
+                  <option>Jakarta Selatan</option>
+                  <option>Jakarta Barat</option>
+                  <option>Jakarta Timur</option>
+                  <option>Jakarta Utara</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Lokasi Pengembalian</label
+                >
+                <select
+                  id="return-location"
+                  class="w-full p-2 border rounded-lg"
+                >
+                  <option>Sama dengan lokasi pengambilan</option>
+                  <option>Jakarta Pusat</option>
+                  <option>Jakarta Selatan</option>
+                  <option>Jakarta Barat</option>
+                  <option>Jakarta Timur</option>
+                  <option>Jakarta Utara</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h3 class="text-xl font-bold mb-4">Tambahan</h3>
+            <div class="space-y-4">
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="insurance"
+                  class="w-5 h-5 text-blue-600 rounded"
+                />
+                <label for="insurance" class="ml-2"
+                  >Asuransi (Rp 50.000/hari)</label
+                >
+              </div>
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="helmet"
+                  class="w-5 h-5 text-blue-600 rounded"
+                />
+                <label for="helmet" class="ml-2"
+                  >Helm (Rp 20.000) - untuk motor</label
+                >
+              </div>
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="child-seat"
+                  class="w-5 h-5 text-blue-600 rounded"
+                />
+                <label for="child-seat" class="ml-2"
+                  >Car Seat Anak (Rp 75.000) - untuk mobil</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-between mt-8">
+            <button
+              id="back-to-step1"
+              class="bg-gray-200 text-gray-700 py-2 px-6 rounded-lg hover:bg-gray-300 transition duration-300"
+            >
+              <i class="fas fa-arrow-left mr-2"></i> Kembali
+            </button>
+            <button
+              id="next-to-step3"
+              class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300"
+            >
+              Selanjutnya <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Personal Information -->
+        <div id="step3-content" class="step-content hidden">
+          <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h3 class="text-xl font-bold mb-4">Ringkasan Pesanan</h3>
+            <div class="border-b pb-4 mb-4">
+              <h4 class="font-bold mb-2">Kendaraan</h4>
+              <div class="flex justify-between">
+                <span id="summary-vehicle-name"></span>
+                <span id="summary-vehicle-price"></span>
+              </div>
+            </div>
+            <div class="border-b pb-4 mb-4">
+              <h4 class="font-bold mb-2">Periode Sewa</h4>
+              <div class="flex justify-between">
+                <span id="summary-rental-period"></span>
+                <span id="summary-rental-days"></span>
+              </div>
+            </div>
+            <div class="border-b pb-4 mb-4">
+              <h4 class="font-bold mb-2">Tambahan</h4>
+              <div id="summary-addons" class="space-y-2">
+                <!-- Addons will be added here dynamically -->
+              </div>
+            </div>
+            <div class="pt-4">
+              <div class="flex justify-between font-bold text-lg">
+                <span>Total Pembayaran</span>
+                <span id="summary-total-price"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h3 class="text-xl font-bold mb-4">Data Diri</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Nama Lengkap</label
+                >
+                <input
+                  type="text"
+                  id="full-name"
+                  class="w-full p-2 border rounded-lg"
+                  placeholder="Masukkan nama lengkap"
+                />
+              </div>
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="w-full p-2 border rounded-lg"
+                  placeholder="Masukkan email"
+                />
+              </div>
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Nomor Telepon</label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  class="w-full p-2 border rounded-lg"
+                  placeholder="Masukkan nomor telepon"
+                />
+              </div>
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Nomor KTP/SIM</label
+                >
+                <input
+                  type="text"
+                  id="id-number"
+                  class="w-full p-2 border rounded-lg"
+                  placeholder="Masukkan nomor KTP/SIM"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h3 class="text-xl font-bold mb-4">Unggah Dokumen</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Foto KTP/SIM</label
+                >
+                <div
+                  class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center"
+                >
+                  <input type="file" id="id-photo" class="hidden" />
+                  <div id="id-photo-preview" class="hidden mb-2">
+                    <img
+                      src=""
+                      alt="KTP/SIM Preview"
+                      class="max-h-32 mx-auto"
+                    />
+                  </div>
+                  <button
+                    id="upload-id-btn"
+                    class="bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition duration-300"
+                  >
+                    <i class="fas fa-upload mr-2"></i> Unggah Foto
+                  </button>
+                  <p class="text-sm text-gray-500 mt-2">
+                    Format: JPG, PNG (Maks. 2MB)
+                  </p>
+                </div>
+              </div>
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Foto Selfie dengan KTP/SIM</label
+                >
+                <div
+                  class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center"
+                >
+                  <input type="file" id="selfie-photo" class="hidden" />
+                  <div id="selfie-photo-preview" class="hidden mb-2">
+                    <img src="" alt="Selfie Preview" class="max-h-32 mx-auto" />
+                  </div>
+                  <button
+                    id="upload-selfie-btn"
+                    class="bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition duration-300"
+                  >
+                    <i class="fas fa-upload mr-2"></i> Unggah Foto
+                  </button>
+                  <p class="text-sm text-gray-500 mt-2">
+                    Format: JPG, PNG (Maks. 2MB)
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-between mt-8">
+            <button
+              id="back-to-step2"
+              class="bg-gray-200 text-gray-700 py-2 px-6 rounded-lg hover:bg-gray-300 transition duration-300"
+            >
+              <i class="fas fa-arrow-left mr-2"></i> Kembali
+            </button>
+            <button
+              id="next-to-step4"
+              class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300"
+            >
+              Selanjutnya <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 4: Payment -->
+        <div id="step4-content" class="step-content hidden">
+          <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h3 class="text-xl font-bold mb-4">Pilih Metode Pembayaran</h3>
+            <div class="space-y-4">
+              <div
+                class="flex items-center border rounded-lg p-4 hover:border-blue-500 cursor-pointer payment-method"
+              >
+                <input
+                  type="radio"
+                  name="payment-method"
+                  id="bank-transfer"
+                  class="w-5 h-5 text-blue-600"
+                  checked
+                />
+                <label for="bank-transfer" class="ml-3 flex-1">
+                  <span class="font-medium">Transfer Bank</span>
+                  <p class="text-sm text-gray-500">
+                    Transfer melalui ATM/Internet Banking/Mobile Banking
+                  </p>
+                </label>
+                <i class="fas fa-university text-2xl text-gray-400"></i>
+              </div>
+
+              <div
+                class="flex items-center border rounded-lg p-4 hover:border-blue-500 cursor-pointer payment-method"
+              >
+                <input
+                  type="radio"
+                  name="payment-method"
+                  id="credit-card"
+                  class="w-5 h-5 text-blue-600"
+                />
+                <label for="credit-card" class="ml-3 flex-1">
+                  <span class="font-medium">Kartu Kredit</span>
+                  <p class="text-sm text-gray-500">
+                    Bayar dengan kartu kredit Visa/Mastercard
+                  </p>
+                </label>
+                <i class="fas fa-credit-card text-2xl text-gray-400"></i>
+              </div>
+
+              <div
+                class="flex items-center border rounded-lg p-4 hover:border-blue-500 cursor-pointer payment-method"
+              >
+                <input
+                  type="radio"
+                  name="payment-method"
+                  id="e-wallet"
+                  class="w-5 h-5 text-blue-600"
+                />
+                <label for="e-wallet" class="ml-3 flex-1">
+                  <span class="font-medium">E-Wallet</span>
+                  <p class="text-sm text-gray-500">
+                    Bayar dengan OVO/DANA/GoPay/LinkAja
+                  </p>
+                </label>
+                <i class="fas fa-wallet text-2xl text-gray-400"></i>
+              </div>
+            </div>
+          </div>
+
+          <div
+            id="bank-transfer-details"
+            class="bg-white rounded-lg shadow-md p-6 mb-6 payment-details"
+          >
+            <h3 class="text-xl font-bold mb-4">Transfer Bank</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="border rounded-lg p-4 text-center">
+                <img src="bca.jpg" alt="BCA" class="h-12 mx-auto mb-2" />
+                <p class="font-bold">Bank Central Asia (BCA)</p>
+                <p class="text-gray-600">1234567890</p>
+                <p class="text-gray-600">PT RentWheels Indonesia</p>
+              </div>
+              <div class="border rounded-lg p-4 text-center">
+                <img
+                  src="mandiri.jpg"
+                  alt="Mandiri"
+                  class="h-12 mx-auto mb-2"
+                />
+                <p class="font-bold">Bank Mandiri</p>
+                <p class="text-gray-600">9876543210</p>
+                <p class="text-gray-600">PT RentWheels Indonesia</p>
+              </div>
+              <div class="border rounded-lg p-4 text-center">
+                <img src="bni.jpg" alt="BNI" class="h-12 mx-auto mb-2" />
+                <p class="font-bold">Bank Negara Indonesia (BNI)</p>
+                <p class="text-gray-600">5678901234</p>
+                <p class="text-gray-600">PT RentWheels Indonesia</p>
+              </div>
+            </div>
+            <div class="mt-6">
+              <p class="text-gray-600 mb-2">Total yang harus dibayar:</p>
+              <p
+                id="payment-total"
+                class="text-2xl font-bold text-blue-600"
+              ></p>
+              <p class="text-sm text-gray-500 mt-2">
+                Silakan transfer sesuai nominal di atas. Pesanan akan diproses
+                setelah pembayaran diterima.
+              </p>
+            </div>
+          </div>
+
+          <div
+            id="credit-card-details"
+            class="bg-white rounded-lg shadow-md p-6 mb-6 payment-details hidden"
+          >
+            <h3 class="text-xl font-bold mb-4">Kartu Kredit</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Nomor Kartu</label
+                >
+                <input
+                  type="text"
+                  class="w-full p-2 border rounded-lg"
+                  placeholder="1234 5678 9012 3456"
+                />
+              </div>
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Nama di Kartu</label
+                >
+                <input
+                  type="text"
+                  class="w-full p-2 border rounded-lg"
+                  placeholder="Nama Pemilik Kartu"
+                />
+              </div>
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Tanggal Kadaluarsa</label
+                >
+                <input
+                  type="text"
+                  class="w-full p-2 border rounded-lg"
+                  placeholder="MM/YY"
+                />
+              </div>
+              <div>
+                <label class="block text-gray-700 font-medium mb-2">CVV</label>
+                <input
+                  type="text"
+                  class="w-full p-2 border rounded-lg"
+                  placeholder="123"
+                />
+              </div>
+            </div>
+            <div class="mt-6">
+              <p class="text-gray-600 mb-2">Total yang harus dibayar:</p>
+              <p
+                id="payment-total-cc"
+                class="text-2xl font-bold text-blue-600"
+              ></p>
+            </div>
+          </div>
+
+          <div
+            id="e-wallet-details"
+            class="bg-white rounded-lg shadow-md p-6 mb-6 payment-details hidden"
+          >
+            <h3 class="text-xl font-bold mb-4">E-Wallet</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div
+                class="border rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 e-wallet-option"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/f/f7/OVO_logo_2016.svg"
+                  alt="OVO"
+                  class="h-12 mx-auto mb-2"
+                />
+                <p class="font-medium">OVO</p>
+              </div>
+              <div
+                class="border rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 e-wallet-option"
+              >
+                <img src="dana.jpg" alt="DANA" class="h-12 mx-auto mb-2" />
+                <p class="font-medium">DANA</p>
+              </div>
+              <div
+                class="border rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 e-wallet-option"
+              >
+                <img src="gopay.jpg" alt="GoPay" class="h-12 mx-auto mb-2" />
+                <p class="font-medium">GoPay</p>
+              </div>
+              <div
+                class="border rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 e-wallet-option"
+              >
+                <img
+                  src="linkaja.jpg"
+                  alt="LinkAja"
+                  class="h-12 mx-auto mb-2"
+                />
+                <p class="font-medium">LinkAja</p>
+              </div>
+            </div>
+            <div class="mt-6">
+              <p class="text-gray-600 mb-2">Total yang harus dibayar:</p>
+              <p
+                id="payment-total-ew"
+                class="text-2xl font-bold text-blue-600"
+              ></p>
+            </div>
+          </div>
+
+          <div class="flex justify-between mt-8">
+            <button
+              id="back-to-step3"
+              class="bg-gray-200 text-gray-700 py-2 px-6 rounded-lg hover:bg-gray-300 transition duration-300"
+            >
+              <i class="fas fa-arrow-left mr-2"></i> Kembali
+            </button>
+            <button
+              id="confirm-payment"
+              class="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 transition duration-300"
+            >
+              Konfirmasi Pembayaran <i class="fas fa-check ml-2"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Confirmation Modal -->
+    <div
+      id="confirmation-modal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
+    >
+      <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4">
+        <div class="p-6 text-center">
+          <i class="fas fa-check-circle text-5xl text-green-500 mb-4"></i>
+          <h3 class="text-2xl font-bold mb-2">Pemesanan Berhasil!</h3>
+          <p class="text-gray-600 mb-6">
+            Terima kasih telah melakukan pemesanan di RentWheels. Detail
+            pemesanan telah dikirim ke email Anda.
+          </p>
+          <div class="bg-gray-100 rounded-lg p-4 mb-6 text-left">
+            <p class="font-medium mb-2">
+              Nomor Pesanan:
+              <span id="order-number" class="font-bold">RENT-123456</span>
+            </p>
+            <p class="font-medium mb-2">
+              Kendaraan:
+              <span id="confirmation-vehicle" class="font-bold"></span>
+            </p>
+            <p class="font-medium mb-2">
+              Periode Sewa:
+              <span id="confirmation-period" class="font-bold"></span>
+            </p>
+            <p class="font-medium">
+              Total Pembayaran:
+              <span id="confirmation-total" class="font-bold"></span>
+            </p>
+          </div>
+          <button
+            id="close-modal"
+            class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300 w-full"
+          >
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-12 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">
+          Cara Menyewa Kendaraan
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <div
+              class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-search text-blue-600 text-2xl"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-2">1. Pilih Kendaraan</h3>
+            <p class="text-gray-600">
+              Temukan kendaraan yang sesuai dengan kebutuhan Anda dari berbagai
+              pilihan motor dan mobil.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <div
+              class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-calendar-alt text-blue-600 text-2xl"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-2">2. Tentukan Periode Sewa</h3>
+            <p class="text-gray-600">
+              Pilih tanggal mulai dan selesai sewa sesuai dengan kebutuhan Anda.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <div
+              class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-credit-card text-blue-600 text-2xl"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-2">3. Lakukan Pembayaran</h3>
+            <p class="text-gray-600">
+              Selesaikan pembayaran dengan metode yang tersedia dan kendaraan
+              siap digunakan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-12 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">
+          Apa Kata Pelanggan Kami
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4"
+              >
+                <i class="fas fa-user text-blue-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold">Zare</h4>
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-600">
+              "Pelayanan sangat memuaskan, motor yang disewa dalam kondisi bagus
+              dan harga terjangkau."
+            </p>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4"
+              >
+                <i class="fas fa-user text-blue-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold">Budi Santoso</h4>
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-600">
+              "Proses sewa mudah dan cepat, mobil bersih dan siap pakai. Sangat
+              recommended!"
+            </p>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4"
+              >
+                <i class="fas fa-user text-blue-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold">Citra Dewi</h4>
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-600">
+              "Pertama kali sewa motor di sini dan sangat puas. Admin ramah dan
+              membantu."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-12 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">
+          Pertanyaan yang Sering Diajukan
+        </h2>
+        <div class="max-w-3xl mx-auto">
+          <div class="bg-white rounded-lg shadow-sm mb-4 overflow-hidden">
+            <button
+              class="faq-question w-full text-left p-4 font-medium hover:bg-gray-50 transition duration-300 flex justify-between items-center"
+            >
+              <span>Bagaimana cara melakukan pemesanan?</span>
+              <i
+                class="fas fa-chevron-down transition-transform duration-300"
+              ></i>
+            </button>
+            <div class="faq-answer p-4 border-t hidden">
+              <p class="text-gray-600">
+                Anda dapat melakukan pemesanan melalui website kami dengan
+                mengikuti langkah-langkah berikut: pilih kendaraan, tentukan
+                periode sewa, isi data diri, dan lakukan pembayaran.
+              </p>
+            </div>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm mb-4 overflow-hidden">
+            <button
+              class="faq-question w-full text-left p-4 font-medium hover:bg-gray-50 transition duration-300 flex justify-between items-center"
+            >
+              <span>Dokumen apa saja yang diperlukan untuk menyewa?</span>
+              <i
+                class="fas fa-chevron-down transition-transform duration-300"
+              ></i>
+            </button>
+            <div class="faq-answer p-4 border-t hidden">
+              <p class="text-gray-600">
+                Anda perlu menyiapkan fotokopi KTP/SIM yang masih berlaku dan
+                foto selfie dengan memegang KTP/SIM tersebut.
+              </p>
+            </div>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm mb-4 overflow-hidden">
+            <button
+              class="faq-question w-full text-left p-4 font-medium hover:bg-gray-50 transition duration-300 flex justify-between items-center"
+            >
+              <span>Apakah ada batasan usia untuk menyewa kendaraan?</span>
+              <i
+                class="fas fa-chevron-down transition-transform duration-300"
+              ></i>
+            </button>
+            <div class="faq-answer p-4 border-t hidden">
+              <p class="text-gray-600">
+                Ya, minimal usia 17 tahun untuk menyewa motor dan 21 tahun untuk
+                menyewa mobil dengan SIM yang masih berlaku.
+              </p>
+            </div>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm mb-4 overflow-hidden">
+            <button
+              class="faq-question w-full text-left p-4 font-medium hover:bg-gray-50 transition duration-300 flex justify-between items-center"
+            >
+              <span>Bagaimana jika terjadi keterlambatan pengembalian?</span>
+              <i
+                class="fas fa-chevron-down transition-transform duration-300"
+              ></i>
+            </button>
+            <div class="faq-answer p-4 border-t hidden">
+              <p class="text-gray-600">
+                Keterlambatan pengembalian akan dikenakan denda sesuai dengan
+                ketentuan yang berlaku. Silakan hubungi customer service kami
+                jika terjadi keterlambatan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-lg font-bold mb-4 flex items-center">
+              <i class="fas fa-car mr-2 text-blue-400"></i> RentWheels
+            </h3>
+            <p class="text-gray-400">
+              Layanan sewa motor dan mobil terbaik dengan harga terjangkau dan
+              pelayanan prima.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Tautan Cepat</h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Beranda</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#vehicles"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Kendaraan</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#how-it-works"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Cara Sewa</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#testimonials"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Testimoni</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Kontak Kami</h3>
+            <ul class="space-y-2">
+              <li class="flex items-center text-gray-400">
+                <i class="fas fa-map-marker-alt mr-2"></i> Jl. Sudirman No. 123,
+                Jakarta
+              </li>
+              <li class="flex items-center text-gray-400">
+                <i class="fas fa-phone-alt mr-2"></i> (021) 1234567
+              </li>
+              <li class="flex items-center text-gray-400">
+                <i class="fas fa-envelope mr-2"></i> info@rentwheels.com
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Jam Operasional</h3>
+            <ul class="space-y-2 text-gray-400">
+              <li class="flex justify-between">
+                <span>Senin - Jumat</span>
+                <span>08:00 - 20:00</span>
+              </li>
+              <li class="flex justify-between">
+                <span>Sabtu - Minggu</span>
+                <span>09:00 - 17:00</span>
+              </li>
+            </ul>
+            <div class="mt-4 flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+              >
+                <i class="fab fa-facebook-f text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+              >
+                <i class="fab fa-instagram text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+              >
+                <i class="fab fa-twitter text-xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400"
+        >
+          <p>&copy; 2023 RentWheels. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
