@@ -95,17 +95,17 @@ function updateVehicleSummary() {
   // Set vehicle image based on selection
   let imageUrl = "";
   if (bookingData.vehicle === "Honda Scoopy") {
-    imageUrl = "honda scoopy.jpg";
+    imageUrl = "gambar motor/honda scoopy.jpg";
   } else if (bookingData.vehicle === "Yamaha NMAX") {
-    imageUrl = "nmax.jpg";
+    imageUrl = "gambar motor/nmax.jpg";
   } else if (bookingData.vehicle === "Vespa Sprint") {
-    imageUrl = "sprint.jpg";
+    imageUrl = "gambar motor/sprint.jpg";
   } else if (bookingData.vehicle === "Toyota Avanza") {
-    imageUrl = "avanza.jpg";
+    imageUrl = "gambar mobil/avanza.jpg";
   } else if (bookingData.vehicle === "Honda Jazz") {
-    imageUrl = "jazz.jpg";
+    imageUrl = "gambar mobil/jazz.jpg";
   } else if (bookingData.vehicle === "Toyota Fortuner") {
-    imageUrl = "fortuner.jpg";
+    imageUrl = "gambar mobil/fortuner.jpg";
   }
 
   document.getElementById("selected-vehicle-image").src = imageUrl;
