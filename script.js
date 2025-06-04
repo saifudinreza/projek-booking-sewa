@@ -426,3 +426,125 @@ eWalletOptions.forEach((option) => {
   });
 });
 // Additional code can be added here if needed
+
+// Confirmation Payment Button
+document
+  .getElementById("confirm-payment")
+  .addEventListener("click", function () {
+    // Show confirmation modal
+    document.getElementById("confirmation-modal").classList.remove("hidden");
+
+    // Generate random order number
+    const orderNumber = "RENT-" + Math.floor(100000 + Math.random() * 900000);
+    document.getElementById("order-number").textContent = orderNumber;
+
+    // Update confirmation details
+    document.getElementById("confirmation-vehicle").textContent =
+      bookingData.vehicle;
+
+    const startDate = new Date(bookingData.startDate).toLocaleDateString(
+      "id-ID",
+      {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }
+    );
+
+    const endDate = new Date(bookingData.endDate).toLocaleDateString("id-ID", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+
+    document.getElementById(
+      "confirmation-period"
+    ).textContent = `${startDate} - ${endDate}`;
+    document.getElementById(
+      "confirmation-total"
+    ).textContent = `Rp ${bookingData.totalPrice.toLocaleString("id-ID")}`;
+
+    // Show receipt link in navigation
+    document.getElementById("receipt-link").classList.remove("hidden");
+    document.getElementById("mobile-receipt-link").classList.remove("hidden");
+  });
+
+// Close Modal
+document.getElementById("close-modal").addEventListener("click", function () {
+  document.getElementById("confirmation-modal").classList.add("hidden");
+
+  // Show booking receipt section
+  document.getElementById("booking-receipt").classList.remove("hidden");
+
+  // Scroll to receipt section
+  document
+    .getElementById("booking-receipt")
+    .scrollIntoView({ behavior: "smooth" });
+
+  // Populate receipt data
+  const receiptDate = new Date().toLocaleDateString("id-ID", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  document.getElementById("receipt-number").textContent =
+    document.getElementById("order-number").textContent;
+  document.getElementById("receipt-date").textContent = receiptDate;
+
+  document.getElementById("receipt-customer-name").textContent =
+    bookingData.personalInfo.fullName;
+  document.getElementById("receipt-customer-email").textContent =
+    bookingData.personalInfo.email;
+  document.getElementById("receipt-customer-phone").textContent =
+    bookingData.personalInfo.phone;
+  document.getElementById("receipt-customer-id").textContent =
+    bookingData.personalInfo.idNumber;
+
+  document.getElementById("receipt-vehicle").textContent = bookingData.vehicle;
+
+  const startDate = new Date(bookingData.startDate).toLocaleDateString(
+    "id-ID",
+    {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }
+  );
+
+  const endDate = new Date(bookingData.endDate).toLocaleDateString("id-ID", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  const diffTime = Math.abs(
+    new Date(bookingData.endDate) - new Date(bookingData.startDate)
+  );
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+  document.getElementById(
+    "receipt-period"
+  ).textContent = `${startDate} - ${endDate} (${diffDays} hari)`;
+
+  document.getElementById("receipt-pickup").textContent =
+    bookingData.pickupLocation;
+  document.getElementById("receipt-return").textContent =
+    bookingData.returnLocation;
+});
+
+// Print Receipt
+document.getElementById("print-receipt").addEventListener("click", function () {
+  window.print();
+});
+
+// Mobile Menu Link Click Handler
+const mobileMenuLinks = document.querySelectorAll("#mobile-menu a");
+mobileMenuLinks.forEach((link) => {
+  link.addEventListener("click", function () {
+    document.getElementById("mobile-menu").classList.add("hidden");
+  });
+});
