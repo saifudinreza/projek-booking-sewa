@@ -1,4 +1,36 @@
 /* Custom CSS for elements that can't be done with Tailwind */
+
+/* Button animation base - prevent layout shift */
+.btn-animate {
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* Form controls: hover & focus - konsisten dengan tombol */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select {
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="tel"]:hover,
+input[type="date"]:hover,
+select:hover {
+  border-color: rgb(147 197 253); /* blue-300 */
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+select:focus {
+  outline: none;
+  border-color: rgb(59 130 246);
+  box-shadow: 0 0 0 2px rgb(59 130 246 / 0.3);
+}
+
 .vehicle-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
