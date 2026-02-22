@@ -1,3 +1,121 @@
+// ========== Anime.js - Animasi untuk semua button ==========
+function initButtonAnimations() {
+  if (typeof anime === "undefined") return;
+
+  // Animasi saat halaman load: hero & rekomendasi cards
+  const heroTitle = document.querySelector(".hero-title");
+  const heroImage = document.querySelector(".hero-image");
+  const btnHero = document.querySelector(".btn-hero");
+  if (heroTitle) {
+    anime({
+      targets: ".hero-title",
+      translateY: [30, 0],
+      opacity: [0, 1],
+      duration: 800,
+      easing: "easeOutExpo",
+    });
+  }
+  if (heroImage) {
+    anime({
+      targets: ".hero-image",
+      translateX: [40, 0],
+      opacity: [0, 1],
+      duration: 900,
+      delay: 200,
+      easing: "easeOutExpo",
+    });
+  }
+  if (btnHero) {
+    anime({
+      targets: ".btn-hero",
+      translateY: [20, 0],
+      opacity: [0, 1],
+      duration: 700,
+      delay: 400,
+      easing: "easeOutBack",
+    });
+  }
+
+  document.querySelectorAll(".rekomendasi-card").forEach((el, i) => {
+    anime({
+      targets: el,
+      translateY: [50, 0],
+      opacity: [0, 1],
+      duration: 600,
+      delay: 150 * i,
+      easing: "easeOutExpo",
+    });
+  });
+
+  // Semua tombol dengan class btn-animate: scale + shadow saat hover (via CSS sudah), klik dapat efek bounce
+  document.querySelectorAll(".btn-animate").forEach((btn) => {
+    btn.addEventListener("mouseenter", function () {
+      anime({
+        targets: this,
+        scale: 1.05,
+        duration: 200,
+        easing: "easeOutQuad",
+      });
+    });
+    btn.addEventListener("mouseleave", function () {
+      anime({
+        targets: this,
+        scale: 1,
+        duration: 200,
+        easing: "easeOutQuad",
+      });
+    });
+    btn.addEventListener("mousedown", function () {
+      anime({
+        targets: this,
+        scale: 0.97,
+        duration: 80,
+        easing: "easeOutQuad",
+      });
+    });
+    btn.addEventListener("mouseup", function () {
+      anime({
+        targets: this,
+        scale: 1.05,
+        duration: 120,
+        easing: "easeOutElastic(1, 0.5)",
+      });
+    });
+  });
+
+  // Tombol Pilih kendaraan (select-vehicle): efek saat klik
+  document.querySelectorAll(".select-vehicle").forEach((btn) => {
+    btn.addEventListener("click", function () {
+      anime({
+        targets: this,
+        scale: [1, 1.15, 1],
+        duration: 400,
+        easing: "easeOutElastic(1, 0.6)",
+      });
+    });
+  });
+
+  // Navbar logo icon subtle loop
+  const navLogo = document.querySelector(".nav-logo-icon");
+  if (navLogo) {
+    navLogo.addEventListener("mouseenter", function () {
+      anime({
+        targets: this,
+        rotate: [0, 10, -10, 0],
+        duration: 500,
+        easing: "easeInOutQuad",
+      });
+    });
+  }
+}
+
+// Jalankan setelah DOM siap
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initButtonAnimations);
+} else {
+  initButtonAnimations();
+}
+
 // Mobile Menu Toggle
 document
   .getElementById("mobile-menu-button")
@@ -88,9 +206,8 @@ selectButtons.forEach((button) => {
 function updateVehicleSummary() {
   document.getElementById("selected-vehicle-name").textContent =
     bookingData.vehicle;
-  document.getElementById(
-    "selected-vehicle-price"
-  ).textContent = `Rp ${bookingData.vehiclePrice.toLocaleString("id-ID")}/hari`;
+  document.getElementById("selected-vehicle-price").textContent =
+    `Rp ${bookingData.vehiclePrice.toLocaleString("id-ID")}/hari`;
 
   // Set vehicle image based on selection
   let imageUrl = "";
@@ -271,15 +388,12 @@ nextButtons.step3.addEventListener("click", function () {
   };
 
   // Update payment total
-  document.getElementById(
-    "payment-total"
-  ).textContent = `Rp ${bookingData.totalPrice.toLocaleString("id-ID")}`;
-  document.getElementById(
-    "payment-total-cc"
-  ).textContent = `Rp ${bookingData.totalPrice.toLocaleString("id-ID")}`;
-  document.getElementById(
-    "payment-total-ew"
-  ).textContent = `Rp ${bookingData.totalPrice.toLocaleString("id-ID")}`;
+  document.getElementById("payment-total").textContent =
+    `Rp ${bookingData.totalPrice.toLocaleString("id-ID")}`;
+  document.getElementById("payment-total-cc").textContent =
+    `Rp ${bookingData.totalPrice.toLocaleString("id-ID")}`;
+  document.getElementById("payment-total-ew").textContent =
+    `Rp ${bookingData.totalPrice.toLocaleString("id-ID")}`;
 
   goToStep(4);
 });
@@ -306,7 +420,7 @@ function updateOrderSummary(days) {
 
   const startDate = new Date(bookingData.startDate).toLocaleDateString(
     "id-ID",
-    { weekday: "long", year: "numeric", month: "long", day: "numeric" }
+    { weekday: "long", year: "numeric", month: "long", day: "numeric" },
   );
   const endDate = new Date(bookingData.endDate).toLocaleDateString("id-ID", {
     weekday: "long",
@@ -315,9 +429,8 @@ function updateOrderSummary(days) {
     day: "numeric",
   });
 
-  document.getElementById(
-    "summary-rental-period"
-  ).textContent = `${startDate} - ${endDate}`;
+  document.getElementById("summary-rental-period").textContent =
+    `${startDate} - ${endDate}`;
   document.getElementById("summary-rental-days").textContent = `${days} hari`;
 
   const addonsContainer = document.getElementById("summary-addons");
@@ -343,9 +456,8 @@ function updateOrderSummary(days) {
     addonsContainer.appendChild(addonDiv);
   });
 
-  document.getElementById(
-    "summary-total-price"
-  ).textContent = `Rp ${bookingData.totalPrice.toLocaleString("id-ID")}`;
+  document.getElementById("summary-total-price").textContent =
+    `Rp ${bookingData.totalPrice.toLocaleString("id-ID")}`;
 }
 
 // File Upload
@@ -389,7 +501,7 @@ document
 
 // Payment Method Selection
 const paymentMethods = document.querySelectorAll(
-  'input[name="payment-method"]'
+  'input[name="payment-method"]',
 );
 const paymentDetails = document.querySelectorAll(".payment-details");
 
@@ -410,6 +522,22 @@ paymentMethods.forEach((method) => {
     } else if (this.id === "e-wallet") {
       document.getElementById("e-wallet-details").classList.remove("hidden");
       bookingData.paymentMethod = "E-Wallet";
+    } else if (this.id === "virtual-account") {
+      const vaEl = document.getElementById("virtual-account-details");
+      if (vaEl) {
+        vaEl.classList.remove("hidden");
+        document.getElementById("payment-total-va").textContent =
+          "Rp " + bookingData.totalPrice.toLocaleString("id-ID");
+      }
+      bookingData.paymentMethod = "Virtual Account";
+    } else if (this.id === "minimarket") {
+      const mmEl = document.getElementById("minimarket-details");
+      if (mmEl) {
+        mmEl.classList.remove("hidden");
+        document.getElementById("payment-total-minimarket").textContent =
+          "Rp " + bookingData.totalPrice.toLocaleString("id-ID");
+      }
+      bookingData.paymentMethod = "Minimarket / Retail";
     }
   });
 });
@@ -448,7 +576,7 @@ document
         day: "numeric",
         month: "long",
         year: "numeric",
-      }
+      },
     );
 
     const endDate = new Date(bookingData.endDate).toLocaleDateString("id-ID", {
@@ -457,12 +585,10 @@ document
       year: "numeric",
     });
 
-    document.getElementById(
-      "confirmation-period"
-    ).textContent = `${startDate} - ${endDate}`;
-    document.getElementById(
-      "confirmation-total"
-    ).textContent = `Rp ${bookingData.totalPrice.toLocaleString("id-ID")}`;
+    document.getElementById("confirmation-period").textContent =
+      `${startDate} - ${endDate}`;
+    document.getElementById("confirmation-total").textContent =
+      `Rp ${bookingData.totalPrice.toLocaleString("id-ID")}`;
 
     // Show receipt link in navigation
     document.getElementById("receipt-link").classList.remove("hidden");
@@ -512,7 +638,7 @@ document.getElementById("close-modal").addEventListener("click", function () {
       day: "numeric",
       month: "long",
       year: "numeric",
-    }
+    },
   );
 
   const endDate = new Date(bookingData.endDate).toLocaleDateString("id-ID", {
@@ -522,13 +648,12 @@ document.getElementById("close-modal").addEventListener("click", function () {
   });
 
   const diffTime = Math.abs(
-    new Date(bookingData.endDate) - new Date(bookingData.startDate)
+    new Date(bookingData.endDate) - new Date(bookingData.startDate),
   );
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
 
-  document.getElementById(
-    "receipt-period"
-  ).textContent = `${startDate} - ${endDate} (${diffDays} hari)`;
+  document.getElementById("receipt-period").textContent =
+    `${startDate} - ${endDate} (${diffDays} hari)`;
 
   document.getElementById("receipt-pickup").textContent =
     bookingData.pickupLocation;
