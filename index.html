@@ -10,6 +10,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -26,92 +27,124 @@
   </head>
   <body class="bg-gray-50 font-sans">
     <!-- Header/Navbar -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-      <div
-        class="container mx-auto px-4 py-3 flex justify-between items-center"
-      >
-        <div class="flex items-center">
-          <i class="fas fa-car text-blue-500 text-2xl mr-2"></i>
-          <h1 class="text-xl font-bold text-blue-600">RentWheels</h1>
-        </div>
-        <nav class="hidden md:flex space-x-6">
-          <a href="#" class="text-blue-600 font-medium">Beranda</a>
-          <a href="#vehicles" class="text-gray-600 hover:text-blue-600"
-            >Kendaraan</a
-          >
-          <a href="#how-it-works" class="text-gray-600 hover:text-blue-600"
-            >Cara Sewa</a
-          >
-          <a href="#testimonials" class="text-gray-600 hover:text-blue-600"
-            >Testimoni</a
-          >
-          <a
-            href="#booking-receipt"
-            class="text-gray-600 hover:text-blue-600 hidden"
-            id="receipt-link"
-            >Bukti Pemesanan</a
-          >
+    <header class="navbar-rentwheels bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-50 border-b border-gray-100">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a href="#" class="flex items-center gap-2 group">
+          <span class="nav-logo-icon inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 text-white shadow-lg shadow-blue-500/30 transition-transform duration-300 group-hover:scale-105">
+            <i class="fas fa-car-side text-lg"></i>
+          </span>
+          <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">RentWheels</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-1">
+          <a href="#" class="nav-link px-4 py-2 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:bg-blue-50 active:bg-blue-100 font-medium transition-all duration-300">Beranda</a>
+          <a href="#rekomendasi" class="nav-link px-4 py-2 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:bg-blue-50 active:bg-blue-100 font-medium transition-all duration-300">Rekomendasi</a>
+          <a href="#booking-section" class="nav-link px-4 py-2 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:bg-blue-50 active:bg-blue-100 font-medium transition-all duration-300">Sewa</a>
+          <a href="#how-it-works" class="nav-link px-4 py-2 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:bg-blue-50 active:bg-blue-100 font-medium transition-all duration-300">Cara Sewa</a>
+          <a href="#testimonials" class="nav-link px-4 py-2 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:bg-blue-50 active:bg-blue-100 font-medium transition-all duration-300">Testimoni</a>
+          <a href="#booking-receipt" class="nav-link px-4 py-2 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:bg-blue-100 font-medium hidden" id="receipt-link">Bukti Pemesanan</a>
         </nav>
-        <div class="md:hidden flex items-center">
-          <button
-            id="mobile-menu-button"
-            class="text-gray-600 hover:text-blue-600 mr-4"
-          >
+        <div class="md:hidden flex items-center gap-2">
+          <button id="mobile-menu-button" class="btn-animate p-2.5 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:bg-blue-100 transition-colors duration-200" aria-label="Menu">
             <i class="fas fa-bars text-xl"></i>
           </button>
-          <a href="#" class="text-gray-600 hover:text-blue-600">
+          <a href="#" class="p-2.5 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:bg-blue-100 transition-colors duration-200">
             <i class="fas fa-user text-xl"></i>
           </a>
         </div>
       </div>
-      <!-- Mobile Menu -->
-      <div id="mobile-menu" class="hidden bg-white border-t md:hidden">
-        <div class="container mx-auto px-4 py-2 flex flex-col">
-          <a href="#" class="py-2 text-blue-600 font-medium">Beranda</a>
-          <a href="#vehicles" class="py-2 text-gray-600 hover:text-blue-600"
-            >Kendaraan</a
-          >
-          <a href="#how-it-works" class="py-2 text-gray-600 hover:text-blue-600"
-            >Cara Sewa</a
-          >
-          <a href="#testimonials" class="py-2 text-gray-600 hover:text-blue-600"
-            >Testimoni</a
-          >
-          <a
-            href="#booking-receipt"
-            class="py-2 text-gray-600 hover:text-blue-600 hidden"
-            id="mobile-receipt-link"
-            >Bukti Pemesanan</a
-          >
+      <div id="mobile-menu" class="hidden bg-white border-t border-gray-100 md:hidden">
+        <div class="container mx-auto px-4 py-3 flex flex-col gap-1">
+          <a href="#" class="nav-link py-3 px-4 rounded-lg text-gray-600 hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset active:bg-blue-100 font-medium transition-all duration-200">Beranda</a>
+          <a href="#rekomendasi" class="nav-link py-3 px-4 rounded-lg text-gray-600 hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset active:bg-blue-100">Rekomendasi</a>
+          <a href="#booking-section" class="nav-link py-3 px-4 rounded-lg text-gray-600 hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset active:bg-blue-100">Sewa</a>
+          <a href="#how-it-works" class="nav-link py-3 px-4 rounded-lg text-gray-600 hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset active:bg-blue-100">Cara Sewa</a>
+          <a href="#testimonials" class="nav-link py-3 px-4 rounded-lg text-gray-600 hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset active:bg-blue-100">Testimoni</a>
+          <a href="#booking-receipt" class="nav-link py-3 px-4 rounded-lg text-gray-600 hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset active:bg-blue-100 hidden" id="mobile-receipt-link">Bukti Pemesanan</a>
         </div>
       </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-blue-600 text-white py-16">
-      <div
-        class="container mx-auto px-4 flex flex-col md:flex-row items-center"
-      >
+    <section class="hero-section bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white py-16 md:py-20 overflow-hidden relative">
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-blue-300 rounded-full blur-3xl"></div>
+      </div>
+      <div class="container mx-auto px-4 flex flex-col md:flex-row items-center relative z-10">
         <div class="md:w-1/2 mb-8 md:mb-0">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          <h2 class="hero-title text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
             Sewa Motor & Mobil Terbaik di Kota Anda
           </h2>
-          <p class="text-lg mb-6">
-            Temukan kendaraan ideal untuk perjalanan Anda dengan harga
-            terjangkau dan pelayanan terbaik.
+          <p class="text-lg md:text-xl text-blue-100 mb-6 max-w-lg">
+            Temukan kendaraan ideal untuk perjalanan Anda dengan harga terjangkau dan pelayanan terbaik.
           </p>
-          <a
-            href="#booking-section"
-            class="bg-white text-blue-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-100 transition duration-300 inline-block"
-            >Sewa Sekarang</a
-          >
+          <a href="#booking-section" class="btn-hero btn-animate inline-flex items-center gap-2 bg-white text-blue-600 font-bold py-3 px-6 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600 active:scale-100 active:shadow-lg transition-all duration-300">
+            <i class="fas fa-calendar-check"></i> Sewa Sekarang
+          </a>
         </div>
         <div class="md:w-1/2 flex justify-center">
           <img
-            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
             alt="Hero Image"
-            class="rounded-lg shadow-xl w-full max-w-md"
+            class="hero-image rounded-2xl shadow-2xl w-full max-w-md border-4 border-white/20"
           />
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Rekomendasi -->
+    <section id="rekomendasi" class="py-12 md:py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Rekomendasi Untuk Anda</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">Kendaraan paling diminati dengan rating tinggi dan harga bersaing</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="rekomendasi-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+            <div class="relative overflow-hidden">
+              <img src="gambar motor/nmax.jpg" alt="Yamaha NMAX" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-amber-400 text-amber-900 text-sm font-semibold">Populer</span>
+              <span class="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-lg bg-white/90 text-amber-500 text-sm"><i class="fas fa-star"></i> 4.9</span>
+            </div>
+            <div class="p-5">
+              <h3 class="font-bold text-lg text-gray-800 mb-1">Yamaha NMAX</h3>
+              <p class="text-gray-500 text-sm mb-3">Motor matic nyaman untuk harian & touring</p>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-blue-600">Rp 200.000<span class="text-gray-500 font-normal text-sm">/hari</span></span>
+                <a href="#booking-section" class="btn-animate inline-flex items-center gap-1 bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-800 active:scale-95 transition-all duration-200">Pilih <i class="fas fa-arrow-right text-xs"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="rekomendasi-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+            <div class="relative overflow-hidden">
+              <img src="gambar mobil/jazz.jpg" alt="Honda Jazz" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-green-500 text-white text-sm font-semibold">Best Value</span>
+              <span class="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-lg bg-white/90 text-amber-500 text-sm"><i class="fas fa-star"></i> 4.8</span>
+            </div>
+            <div class="p-5">
+              <h3 class="font-bold text-lg text-gray-800 mb-1">Honda Jazz</h3>
+              <p class="text-gray-500 text-sm mb-3">Mobil compact nyaman untuk keluarga</p>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-blue-600">Rp 400.000<span class="text-gray-500 font-normal text-sm">/hari</span></span>
+                <a href="#booking-section" class="btn-animate inline-flex items-center gap-1 bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-800 active:scale-95 transition-all duration-200">Pilih <i class="fas fa-arrow-right text-xs"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="rekomendasi-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+            <div class="relative overflow-hidden">
+              <img src="gambar motor/honda scoopy.jpg" alt="Honda Scoopy" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-blue-500 text-white text-sm font-semibold">Ekonomis</span>
+              <span class="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-lg bg-white/90 text-amber-500 text-sm"><i class="fas fa-star"></i> 4.7</span>
+            </div>
+            <div class="p-5">
+              <h3 class="font-bold text-lg text-gray-800 mb-1">Honda Scoopy</h3>
+              <p class="text-gray-500 text-sm mb-3">Hemat bahan bakar, cocok untuk kota</p>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-blue-600">Rp 150.000<span class="text-gray-500 font-normal text-sm">/hari</span></span>
+                <a href="#booking-section" class="btn-animate inline-flex items-center gap-1 bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-800 active:scale-95 transition-all duration-200">Pilih <i class="fas fa-arrow-right text-xs"></i></a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -169,13 +202,13 @@
               <div class="flex border rounded-lg overflow-hidden">
                 <button
                   id="btn-motor"
-                  class="flex-1 py-2 px-4 bg-blue-600 text-white font-medium"
+                  class="btn-animate flex-1 py-2 px-4 bg-blue-600 text-white font-medium rounded-l-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-800 active:scale-[0.98] transition-all duration-200"
                 >
                   Motor
                 </button>
                 <button
                   id="btn-mobil"
-                  class="flex-1 py-2 px-4 bg-gray-200 text-gray-700 font-medium"
+                  class="btn-animate flex-1 py-2 px-4 bg-gray-200 text-gray-700 font-medium rounded-r-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-gray-400 active:scale-[0.98] transition-all duration-200"
                 >
                   Mobil
                 </button>
@@ -185,7 +218,7 @@
               <label class="block text-gray-700 font-medium mb-2"
                 >Lokasi Pengambilan</label
               >
-              <select class="w-full p-2 border rounded-lg">
+              <select class="w-full p-2 border rounded-lg hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-500 transition-colors duration-200">
                 <option>Jakarta Pusat</option>
                 <option>Jakarta Selatan</option>
                 <option>Jakarta Barat</option>
@@ -225,7 +258,7 @@
                   <div class="flex justify-between items-center">
                     <span class="font-bold text-blue-600">Rp 150.000/hari</span>
                     <button
-                      class="select-vehicle bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+                      class="select-vehicle btn-animate bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-800 active:scale-95 transition-all duration-200"
                       data-vehicle="Honda Scoopy"
                       data-price="150000"
                     >
@@ -259,7 +292,7 @@
                   <div class="flex justify-between items-center">
                     <span class="font-bold text-blue-600">Rp 200.000/hari</span>
                     <button
-                      class="select-vehicle bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+                      class="select-vehicle btn-animate bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-800 active:scale-95 transition-all duration-200"
                       data-vehicle="Yamaha NMAX"
                       data-price="200000"
                     >
@@ -293,7 +326,7 @@
                   <div class="flex justify-between items-center">
                     <span class="font-bold text-blue-600">Rp 250.000/hari</span>
                     <button
-                      class="select-vehicle bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+                      class="select-vehicle btn-animate bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-800 active:scale-95 transition-all duration-200"
                       data-vehicle="Vespa Sprint"
                       data-price="250000"
                     >
@@ -332,7 +365,7 @@
                   <div class="flex justify-between items-center">
                     <span class="font-bold text-blue-600">Rp 350.000/hari</span>
                     <button
-                      class="select-vehicle bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+                      class="select-vehicle btn-animate bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-800 active:scale-95 transition-all duration-200"
                       data-vehicle="Toyota Avanza"
                       data-price="350000"
                     >
@@ -366,7 +399,7 @@
                   <div class="flex justify-between items-center">
                     <span class="font-bold text-blue-600">Rp 400.000/hari</span>
                     <button
-                      class="select-vehicle bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+                      class="select-vehicle btn-animate bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-800 active:scale-95 transition-all duration-200"
                       data-vehicle="Honda Jazz"
                       data-price="400000"
                     >
@@ -400,7 +433,7 @@
                   <div class="flex justify-between items-center">
                     <span class="font-bold text-blue-600">Rp 600.000/hari</span>
                     <button
-                      class="select-vehicle bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+                      class="select-vehicle btn-animate bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-800 active:scale-95 transition-all duration-200"
                       data-vehicle="Toyota Fortuner"
                       data-price="600000"
                     >
@@ -415,7 +448,7 @@
           <div class="mt-8 flex justify-end">
             <button
               id="next-to-step2"
-              class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="btn-animate bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-800 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-blue-600 disabled:active:scale-100 transition-all duration-200"
               disabled
             >
               Selanjutnya <i class="fas fa-arrow-right ml-2"></i>
@@ -571,13 +604,13 @@
           <div class="flex justify-between mt-8">
             <button
               id="back-to-step1"
-              class="bg-gray-200 text-gray-700 py-2 px-6 rounded-lg hover:bg-gray-300 transition duration-300"
+              class="btn-animate bg-gray-200 text-gray-700 py-2 px-6 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 active:bg-gray-400 active:scale-[0.98] transition-all duration-200"
             >
               <i class="fas fa-arrow-left mr-2"></i> Kembali
             </button>
             <button
               id="next-to-step3"
-              class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300"
+              class="btn-animate bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-800 active:scale-[0.98] transition-all duration-200"
             >
               Selanjutnya <i class="fas fa-arrow-right ml-2"></i>
             </button>
@@ -686,7 +719,7 @@
                   </div>
                   <button
                     id="upload-id-btn"
-                    class="bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition duration-300"
+                    class="btn-animate bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-gray-300 active:scale-95 transition-all duration-200"
                   >
                     <i class="fas fa-upload mr-2"></i> Unggah Foto
                   </button>
@@ -708,7 +741,7 @@
                   </div>
                   <button
                     id="upload-selfie-btn"
-                    class="bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition duration-300"
+                    class="btn-animate bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-gray-300 active:scale-95 transition-all duration-200"
                   >
                     <i class="fas fa-upload mr-2"></i> Unggah Foto
                   </button>
@@ -723,13 +756,13 @@
           <div class="flex justify-between mt-8">
             <button
               id="back-to-step2"
-              class="bg-gray-200 text-gray-700 py-2 px-6 rounded-lg hover:bg-gray-300 transition duration-300"
+              class="btn-animate bg-gray-200 text-gray-700 py-2 px-6 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 active:bg-gray-400 active:scale-[0.98] transition-all duration-200"
             >
               <i class="fas fa-arrow-left mr-2"></i> Kembali
             </button>
             <button
               id="next-to-step4"
-              class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300"
+              class="btn-animate bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-800 active:scale-[0.98] transition-all duration-200"
             >
               Selanjutnya <i class="fas fa-arrow-right ml-2"></i>
             </button>
@@ -742,7 +775,7 @@
             <h3 class="text-xl font-bold mb-4">Pilih Metode Pembayaran</h3>
             <div class="space-y-4">
               <div
-                class="flex items-center border rounded-lg p-4 hover:border-blue-500 cursor-pointer payment-method"
+                class="flex items-center border rounded-lg p-4 hover:border-blue-500 hover:bg-blue-50/50 focus-within:ring-2 focus-within:ring-blue-400 focus-within:ring-offset-2 focus-within:border-blue-500 active:bg-blue-50 cursor-pointer payment-method transition-all duration-200"
               >
                 <input
                   type="radio"
@@ -761,7 +794,7 @@
               </div>
 
               <div
-                class="flex items-center border rounded-lg p-4 hover:border-blue-500 cursor-pointer payment-method"
+                class="flex items-center border rounded-lg p-4 hover:border-blue-500 hover:bg-blue-50/50 focus-within:ring-2 focus-within:ring-blue-400 focus-within:ring-offset-2 focus-within:border-blue-500 active:bg-blue-50 cursor-pointer payment-method transition-all duration-200"
               >
                 <input
                   type="radio"
@@ -779,7 +812,7 @@
               </div>
 
               <div
-                class="flex items-center border rounded-lg p-4 hover:border-blue-500 cursor-pointer payment-method"
+                class="flex items-center border rounded-lg p-4 hover:border-blue-500 hover:bg-blue-50/50 focus-within:ring-2 focus-within:ring-blue-400 focus-within:ring-offset-2 focus-within:border-blue-500 active:bg-blue-50 cursor-pointer payment-method transition-all duration-200"
               >
                 <input
                   type="radio"
@@ -788,12 +821,34 @@
                   class="w-5 h-5 text-blue-600"
                 />
                 <label for="e-wallet" class="ml-3 flex-1">
-                  <span class="font-medium">E-Wallet</span>
+                  <span class="font-medium">E-Wallet / Dompet Digital</span>
                   <p class="text-sm text-gray-500">
-                    Bayar dengan OVO/DANA/GoPay/LinkAja
+                    Bayar dengan OVO, DANA, GoPay, LinkAja, ShopeePay
                   </p>
                 </label>
                 <i class="fas fa-wallet text-2xl text-gray-400"></i>
+              </div>
+
+              <div class="flex items-center border rounded-lg p-4 hover:border-blue-500 hover:bg-blue-50/50 focus-within:ring-2 focus-within:ring-blue-400 focus-within:ring-offset-2 focus-within:border-blue-500 active:bg-blue-50 cursor-pointer payment-method transition-all duration-200">
+                <input type="radio" name="payment-method" id="virtual-account" class="w-5 h-5 text-blue-600" />
+                <label for="virtual-account" class="ml-3 flex-1">
+                  <span class="font-medium">Virtual Account (VA)</span>
+                  <p class="text-sm text-gray-500">
+                    Bayar dengan VA BCA, Mandiri, BNI, BRI, dan bank lainnya
+                  </p>
+                </label>
+                <i class="fas fa-building text-2xl text-gray-400"></i>
+              </div>
+
+              <div class="flex items-center border rounded-lg p-4 hover:border-blue-500 hover:bg-blue-50/50 focus-within:ring-2 focus-within:ring-blue-400 focus-within:ring-offset-2 focus-within:border-blue-500 active:bg-blue-50 cursor-pointer payment-method transition-all duration-200">
+                <input type="radio" name="payment-method" id="minimarket" class="w-5 h-5 text-blue-600" />
+                <label for="minimarket" class="ml-3 flex-1">
+                  <span class="font-medium">Minimarket & Retail</span>
+                  <p class="text-sm text-gray-500">
+                    Bayar di Alfamart, Indomaret, atau gerai retail terdekat
+                  </p>
+                </label>
+                <i class="fas fa-store text-2xl text-gray-400"></i>
               </div>
             </div>
           </div>
@@ -906,10 +961,10 @@
             id="e-wallet-details"
             class="bg-white rounded-lg shadow-md p-6 mb-6 payment-details hidden"
           >
-            <h3 class="text-xl font-bold mb-4">E-Wallet</h3>
+            <h3 class="text-xl font-bold mb-4">Dompet Digital / E-Wallet</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div
-                class="border rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 e-wallet-option"
+                class="border rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-100 active:scale-[0.98] e-wallet-option transition-all duration-200"
               >
                 <img
                   src="payment Ewallet\ovo.jpg"
@@ -919,7 +974,7 @@
                 <p class="font-medium">OVO</p>
               </div>
               <div
-                class="border rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 e-wallet-option"
+                class="border rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-100 active:scale-[0.98] e-wallet-option transition-all duration-200"
               >
                 <img
                   src="payment Ewallet/dana.jpg"
@@ -929,7 +984,7 @@
                 <p class="font-medium">DANA</p>
               </div>
               <div
-                class="border rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 e-wallet-option"
+                class="border rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-100 active:scale-[0.98] e-wallet-option transition-all duration-200"
               >
                 <img
                   src="payment Ewallet/gopay.jpg"
@@ -939,7 +994,7 @@
                 <p class="font-medium">GoPay</p>
               </div>
               <div
-                class="border rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 e-wallet-option"
+                class="border rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-100 active:scale-[0.98] e-wallet-option transition-all duration-200"
               >
                 <img
                   src="payment Ewallet/linkaja.jpg"
@@ -958,16 +1013,68 @@
             </div>
           </div>
 
+          <div id="virtual-account-details" class="bg-white rounded-lg shadow-md p-6 mb-6 payment-details hidden">
+            <h3 class="text-xl font-bold mb-4">Virtual Account</h3>
+            <p class="text-gray-600 mb-4">Pilih bank untuk mendapatkan nomor Virtual Account. Bayar melalui mobile/online banking atau ATM.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div class="border rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-100 active:scale-[0.98] va-option transition-all duration-200">
+                <p class="font-bold text-red-600">BCA</p>
+                <p class="text-sm text-gray-500">VA akan muncul setelah pilih</p>
+              </div>
+              <div class="border rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-100 active:scale-[0.98] va-option transition-all duration-200">
+                <p class="font-bold text-green-600">Mandiri</p>
+                <p class="text-sm text-gray-500">VA akan muncul setelah pilih</p>
+              </div>
+              <div class="border rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-100 active:scale-[0.98] va-option transition-all duration-200">
+                <p class="font-bold text-yellow-600">BNI</p>
+                <p class="text-sm text-gray-500">VA akan muncul setelah pilih</p>
+              </div>
+              <div class="border rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-100 active:scale-[0.98] va-option transition-all duration-200">
+                <p class="font-bold text-blue-600">BRI</p>
+                <p class="text-sm text-gray-500">VA akan muncul setelah pilih</p>
+              </div>
+            </div>
+            <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+              <p class="text-gray-600 mb-2">Total yang harus dibayar:</p>
+              <p id="payment-total-va" class="text-2xl font-bold text-blue-600"></p>
+            </div>
+          </div>
+
+          <div id="minimarket-details" class="bg-white rounded-lg shadow-md p-6 mb-6 payment-details hidden">
+            <h3 class="text-xl font-bold mb-4">Bayar di Minimarket / Retail</h3>
+            <p class="text-gray-600 mb-4">Tunjukkan kode pembayaran di kasir Alfamart, Indomaret, atau gerai rekanan.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="border rounded-lg p-4 flex items-center gap-4">
+                <span class="text-2xl">🏪</span>
+                <div>
+                  <p class="font-bold">Alfamart</p>
+                  <p class="text-sm text-gray-500">Kode: RENT + No. HP</p>
+                </div>
+              </div>
+              <div class="border rounded-lg p-4 flex items-center gap-4">
+                <span class="text-2xl">🏬</span>
+                <div>
+                  <p class="font-bold">Indomaret</p>
+                  <p class="text-sm text-gray-500">Kode: RENT + No. HP</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+              <p class="text-gray-600 mb-2">Total yang harus dibayar:</p>
+              <p id="payment-total-minimarket" class="text-2xl font-bold text-blue-600"></p>
+            </div>
+          </div>
+
           <div class="flex justify-between mt-8">
             <button
               id="back-to-step3"
-              class="bg-gray-200 text-gray-700 py-2 px-6 rounded-lg hover:bg-gray-300 transition duration-300"
+              class="btn-animate bg-gray-200 text-gray-700 py-2 px-6 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 active:bg-gray-400 active:scale-[0.98] transition-all duration-200"
             >
               <i class="fas fa-arrow-left mr-2"></i> Kembali
             </button>
             <button
               id="confirm-payment"
-              class="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 transition duration-300"
+              class="btn-animate bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 active:bg-green-800 active:scale-[0.98] transition-all duration-200"
             >
               Konfirmasi Pembayaran <i class="fas fa-check ml-2"></i>
             </button>
@@ -1009,7 +1116,7 @@
           </div>
           <button
             id="close-modal"
-            class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300 w-full"
+            class="btn-animate bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-800 active:scale-[0.98] transition-all duration-200 w-full"
           >
             Tutup
           </button>
@@ -1064,7 +1171,7 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id"testimonials" class="py-12 bg-white">
+    <section id="testimonials" class="py-12 bg-white">
       <div class="container mx-auto px-4">
         <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">
           Apa Kata Pelanggan Kami
@@ -1152,7 +1259,7 @@
         <div class="max-w-3xl mx-auto">
           <div class="bg-white rounded-lg shadow-sm mb-4 overflow-hidden">
             <button
-              class="faq-question w-full text-left p-4 font-medium hover:bg-gray-50 transition duration-300 flex justify-between items-center"
+              class="faq-question w-full text-left p-4 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-inset focus:bg-gray-50 active:bg-gray-100 transition-all duration-200 flex justify-between items-center"
             >
               <span>Bagaimana cara melakukan pemesanan?</span>
               <i
@@ -1169,7 +1276,7 @@
           </div>
           <div class="bg-white rounded-lg shadow-sm mb-4 overflow-hidden">
             <button
-              class="faq-question w-full text-left p-4 font-medium hover:bg-gray-50 transition duration-300 flex justify-between items-center"
+              class="faq-question w-full text-left p-4 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-inset focus:bg-gray-50 active:bg-gray-100 transition-all duration-200 flex justify-between items-center"
             >
               <span>Dokumen apa saja yang diperlukan untuk menyewa?</span>
               <i
@@ -1185,7 +1292,7 @@
           </div>
           <div class="bg-white rounded-lg shadow-sm mb-4 overflow-hidden">
             <button
-              class="faq-question w-full text-left p-4 font-medium hover:bg-gray-50 transition duration-300 flex justify-between items-center"
+              class="faq-question w-full text-left p-4 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-inset focus:bg-gray-50 active:bg-gray-100 transition-all duration-200 flex justify-between items-center"
             >
               <span>Apakah ada batasan usia untuk menyewa kendaraan?</span>
               <i
@@ -1201,7 +1308,7 @@
           </div>
           <div class="bg-white rounded-lg shadow-sm mb-4 overflow-hidden">
             <button
-              class="faq-question w-full text-left p-4 font-medium hover:bg-gray-50 transition duration-300 flex justify-between items-center"
+              class="faq-question w-full text-left p-4 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-inset focus:bg-gray-50 active:bg-gray-100 transition-all duration-200 flex justify-between items-center"
             >
               <span>Bagaimana jika terjadi keterlambatan pengembalian?</span>
               <i
@@ -1480,19 +1587,19 @@
             >
               <button
                 id="print-receipt"
-                class="bg-primary hover:bg-blue-700 text-white py-3 px-6 rounded-lg flex items-center justify-center transition"
+                class="btn-animate bg-primary hover:bg-blue-700 text-white py-3 px-6 rounded-lg flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-800 active:scale-[0.98] transition-all duration-200"
               >
                 <i class="fas fa-print mr-2"></i> Cetak Bukti
               </button>
 
               <button
-                class="border border-primary text-primary hover:bg-blue-50 py-3 px-6 rounded-lg flex items-center justify-center transition"
+                class="btn-animate border border-primary text-primary hover:bg-blue-50 py-3 px-6 rounded-lg flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-100 active:scale-[0.98] transition-all duration-200"
               >
                 <i class="fas fa-share-alt mr-2"></i> Bagikan
               </button>
 
               <button
-                class="bg-gray-800 hover:bg-gray-900 text-white py-3 px-6 rounded-lg flex items-center justify-center transition"
+                class="btn-animate bg-gray-800 hover:bg-gray-900 text-white py-3 px-6 rounded-lg flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 active:bg-gray-950 active:scale-[0.98] transition-all duration-200"
               >
                 <i class="fas fa-download mr-2"></i> Unduh PDF
               </button>
@@ -1554,7 +1661,7 @@
                       >
                     </td>
                     <td class="py-3 px-4 text-sm">
-                      <button class="text-blue-600 hover:text-blue-800">
+                      <button class="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1 rounded px-1 active:text-blue-900 transition-colors duration-200">
                         Lihat Detail
                       </button>
                     </td>
@@ -1571,7 +1678,7 @@
                       >
                     </td>
                     <td class="py-3 px-4 text-sm">
-                      <button class="text-blue-600 hover:text-blue-800">
+                      <button class="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1 rounded px-1 active:text-blue-900 transition-colors duration-200">
                         Lihat Detail
                       </button>
                     </td>
@@ -1588,7 +1695,7 @@
                       >
                     </td>
                     <td class="py-3 px-4 text-sm">
-                      <button class="text-blue-600 hover:text-blue-800">
+                      <button class="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1 rounded px-1 active:text-blue-900 transition-colors duration-200">
                         Lihat Detail
                       </button>
                     </td>
@@ -1606,15 +1713,15 @@
               </p>
               <div class="flex space-x-2">
                 <button
-                  class="px-3 py-1 rounded-md bg-gray-200 text-gray-700 disabled:opacity-50"
+                  class="px-3 py-1 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-200 transition-colors duration-200"
                 >
                   &lt;
                 </button>
-                <button class="px-3 py-1 rounded-md bg-blue-600 text-white">
+                <button class="px-3 py-1 rounded-md bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1 active:bg-blue-800 active:scale-95 transition-all duration-200">
                   1
                 </button>
                 <button
-                  class="px-3 py-1 rounded-md bg-gray-200 text-gray-700 disabled:opacity-50"
+                  class="px-3 py-1 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-200 transition-colors duration-200"
                 >
                   &gt;
                 </button>
