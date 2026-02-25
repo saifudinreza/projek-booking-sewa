@@ -124,15 +124,7 @@ projek-booking-sewa-main/
 
 ---
 
-## 👨‍💻 Developer
 
-Dibuat dengan ❤️ sebagai proyek belajar web development.
-
-```
-"Belajar itu proses, bukan hasil akhir."
-```
-
----
 
 ## 📝 Lisensi
 
